@@ -29,3 +29,8 @@ class Controller:
 
     # Altre Funzioni Event Handler
     # TODO
+    def mostra_automobili(self, e):
+        pass
+
+    def cerca_automobili(self, e):
+        pass
