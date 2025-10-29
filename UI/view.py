@@ -65,6 +65,7 @@ class View:
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
         # TODO
         pulsante_mostra_automobili = ft.ElevatedButton("Mostra", on_click=self.controller.mostra_automobili)
+        self.input_modello = ft.TextField(value=self.controller.get_responsabile(), label="Modello")
         pulsante_cerca_automobili = ft.ElevatedButton("Cerca", on_click=self.controller.cerca_automobili)
 
 
@@ -85,13 +86,18 @@ class View:
             ft.Divider(),
 
             # Sezione 3
-            ft.Row(spacing=200,
-                   controls=["Automobili", pulsante_mostra_automobili]),
+            ft.Row(spacing=20,
+                   vertical_alignment=ft.CrossAxisAlignment.START,
+                   controls=[ft.Text("Automobili"), pulsante_mostra_automobili, self.lista_auto],
+                   height=150),
             ft.Divider(),
 
             # Sezione 4
-            ft.Row(spacing=200,
-                   controls=["Automobili", pulsante_cerca_automobili]),
+            ft.Text("Cerca Automobile", size=20),
+            ft.Row(spacing=20,
+                   vertical_alignment=ft.CrossAxisAlignment.START,
+                   controls=[self.input_modello, pulsante_cerca_automobili, self.lista_auto_ricerca],
+                   height=100),
             ft.Divider(),
         )
 

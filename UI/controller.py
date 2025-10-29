@@ -1,5 +1,6 @@
 import flet as ft
 from UI.view import View
+from model.automobile import Automobile
 from model.model import Autonoleggio
 
 '''
@@ -9,6 +10,7 @@ from model.model import Autonoleggio
 '''
 
 class Controller:
+
     def __init__(self, view : View, model : Autonoleggio):
         self._model = model
         self._view = view
@@ -30,7 +32,22 @@ class Controller:
     # Altre Funzioni Event Handler
     # TODO
     def mostra_automobili(self, e):
-        pass
+        automobili = self._model.get_automobili()
+        self._view.lista_auto.controls.clear()
+        if not automobili:
+            self._view.lista_auto.controls.append(ft.Text("Nessuna automobile trovata"))
+        else:
+            for auto in automobili:
+                self._view.lista_auto.controls.append(ft.Text(f"{auto.codice} - {auto.marca} {auto.modello} ({auto.anno}) - {auto.posti} posti - {'Disponibile' if auto.disponibile else 'Non disponibile'}"))
+        self._view.update()
+
 
     def cerca_automobili(self, e):
-        pass
+        automobili = self._model.get_automobili()
+        self._view.lista_auto_ricerca.controls.clear()
+        if not automobili:
+            self._view.lista_auto_ricerca.controls.append(ft.Text("Nessuna automobile trovata"))
+        else:
+            for auto in automobili:
+                self._view.lista_auto_ricerca.controls.append(ft.Text(f"{auto.codice} - {auto.marca} {auto.modello} ({auto.anno}) - {auto.posti} posti - {'Disponibile' if auto.disponibile else 'Non disponibile'}"))
+        self._view.update()
