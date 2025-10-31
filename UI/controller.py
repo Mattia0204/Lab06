@@ -43,7 +43,8 @@ class Controller:
 
 
     def cerca_automobili(self, e):
-        automobili = self._model.get_automobili()
+        modello = self._view.input_modello.value  # prende il modello dall’input
+        automobili = self._model.cerca_automobili_per_modello(modello)
         self._view.lista_auto_ricerca.controls.clear()
         if not automobili:
             self._view.lista_auto_ricerca.controls.append(ft.Text("Nessuna automobile trovata"))

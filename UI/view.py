@@ -65,7 +65,7 @@ class View:
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
         # TODO
         pulsante_mostra_automobili = ft.ElevatedButton("Mostra", on_click=self.controller.mostra_automobili)
-        self.input_modello = ft.TextField(value=self.controller.get_responsabile(), label="Modello")
+        self.input_modello = ft.TextField(value="", label="Modello")
         pulsante_cerca_automobili = ft.ElevatedButton("Cerca", on_click=self.controller.cerca_automobili)
 
 
